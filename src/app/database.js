@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const mysql = require('mysql');
-const errMsg = require('./constants');
+const errorMessage = require('./constants');
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -17,7 +17,7 @@ async function connectToDb () {
       console.log('Database connected');
     });
   } catch (e) {
-    console.log(errMsg.CONNECTION_TO_DB_FAILED + e);
+    console.log(errorMessage.CONNECTION_TO_DB_FAILED + e);
   }
 }
 

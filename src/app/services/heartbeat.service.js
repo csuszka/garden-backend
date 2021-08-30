@@ -16,4 +16,4 @@ let getDbStatus = () => {
   }
 }
 
-export default getDbStatus;
+module.exports = { getDbStatus };

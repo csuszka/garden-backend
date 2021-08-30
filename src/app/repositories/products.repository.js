@@ -2,7 +2,7 @@
 
 const db = require('../database.js');
 
-let getAvailableProducts = () => {
+let getAllAvailableProducts = () => {
   return new Promise((resolve, reject) => {
     const query = 'SELECT * FROM webshopitems;';
     db.conn.query(query, (err, rows) => {
@@ -68,5 +68,4 @@ let deleteProduct = (id) => {
 }
 
 
-
-module.exports = { getAvailableProducts, getProduct, createProduct, updateProduct, deleteProduct };
+module.exports = { getAllAvailableProducts, getProduct, createProduct, updateProduct, deleteProduct };
