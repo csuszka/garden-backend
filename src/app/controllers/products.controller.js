@@ -11,6 +11,7 @@ let getAllProducts = async (req, res) => {
     res.status(200).json(allAvailableProducts);
   }
   catch (err) {
+    console.log('controlleree')
     console.log(err);
     res.status(500).json({ error: INTERNAL_SERVER_ERROR });
   };

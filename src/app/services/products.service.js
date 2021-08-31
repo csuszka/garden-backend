@@ -3,6 +3,7 @@
 const repository = require('../repositories/products.repository');
 
 let getAllAvailableProducts = async () => {
+  console.log('allavailableservice')
   const result = await repository.getAllAvailableProducts();
   return result;
 }

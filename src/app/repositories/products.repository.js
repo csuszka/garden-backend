@@ -7,6 +7,7 @@ let getAllAvailableProducts = () => {
     const query = 'SELECT * FROM webshopitems;';
     db.conn.query(query, (err, rows) => {
       if (err) {
+        console.log('dberr')
         reject(err);
       } else {
         return resolve(rows);
