@@ -1,7 +1,6 @@
 'use strict';
 
 const mysql = require('mysql');
-const errorMessage = require('./constants');
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -11,21 +10,12 @@ const conn = mysql.createConnection({
   insecureAuth: true
 });
 
-/*async*/ function connectToDb () {
-  // try {
-  //   await conn.connect(() => {
-  //     console.log('Database connected');
-  //   });
-  // } catch (e) {
-  //   console.log(errorMessage.CONNECTION_TO_DB_FAILED + e);
-  // }
+let connectToDb = () => {
   conn.connect((err) => {
     if (err) {
       console.error('error connecting: ' + err.stack);
       return;
     }
-
-    // console.log('connected as id ' + conn.threadId);
   });
 }
 
