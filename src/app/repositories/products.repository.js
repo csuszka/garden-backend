@@ -44,21 +44,29 @@ let getProduct = (id) => {
 
 let createProduct = ({ category, name, price, picture, details }) => {
   return new Promise((resolve, reject) => {
-    const query = 'INSERT INTO webshopitems (name, price, picture, details) VALUES (?,?,?,?)';
-    db.conn.query(query, [category, name, price, picture, details], (error, rows) => {
-      if (error) {
-        reject(error);
-      } else {
-        return resolve(rows);
-      }
-    })
+    const query = `INSERT INTO webshopitems (${category ? 'category, ' : ''}${name ? 'name, ' : ''}${price ? 'price, ' : ''}${picture ? 'picture, ' : ''}${details ? 'details ' : ''}) VALUES (${category ? '?, ' : ''}${name ? '?, ' : ''}${price ? '?, ' : ''}${picture ? '?, ' : ''}${details ? '? ' : ''});`;
+    const queryArray = [Number(category), name, price, picture, details].filter(variable => variable);
+
+    if (queryArray.length < 1) {
+      reject(new Error('No changes were made'))
+    } else {
+      const modifiedQuery = query.replaceAll(', )', ')');
+
+      db.conn.query(modifiedQuery || query, queryArray, (error, rows) => {
+        if (error) {
+          reject(error);
+        } else {
+          return resolve(rows);
+        }
+      })
+    }
   })
 }
 
-let updateProduct = ({ name, category, price, picture, details, id }) => {
+let updateProduct = ({ category, name, price, picture, details, id }) => {
   return new Promise((resolve, reject) => {
-    const query = `UPDATE webshopitems SET ${name ? 'name = ?, ' : ''}${category ? 'category = ?, ' : ''}${price ? 'price = ?, ' : ''}${picture ? 'picture = ?, ' : ''}${details ? 'details = ? ' : ''}WHERE id = ?;`;
-    const queryArray = [name, Number(category), price, picture, details, Number(id)].filter(variable => variable);
+    const query = `UPDATE webshopitems SET ${category ? 'category = ?, ' : ''}${name ? 'name = ?, ' : ''}${price ? 'price = ?, ' : ''}${picture ? 'picture = ?, ' : ''}${details ? 'details = ? ' : ''}WHERE id = ?;`;
+    const queryArray = [Number(category), name, price, picture, details, Number(id)].filter(variable => variable);
 
     if (queryArray.length < 2) {
       reject(new Error('No changes were made'))

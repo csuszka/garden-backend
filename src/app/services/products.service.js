@@ -17,13 +17,13 @@ let getProduct = async (id) => {
   return result;
 }
 
-let createProduct = async ({ name, price, picture, details }) => {
-  const result = await repository.createProduct({ name, price, picture, details });
+let createProduct = async (productProperties) => {
+  const result = await repository.createProduct(productProperties);
   return result;
 }
 
-let updateProduct = async (updatingVariables) => {
-  const result = await repository.updateProduct(updatingVariables);
+let updateProduct = async (propertiesToUpdate) => {
+  const result = await repository.updateProduct(propertiesToUpdate);
   return result;
 }
 
