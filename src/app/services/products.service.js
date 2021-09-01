@@ -3,8 +3,12 @@
 const repository = require('../repositories/products.repository');
 
 let getAllAvailableProducts = async () => {
-  console.log('allavailableservice')
   const result = await repository.getAllAvailableProducts();
+  return result;
+}
+
+let getAllProductFromACategory = async (category) => {
+  const result = await repository.getAllProductFromACategory(category);
   return result;
 }
 
@@ -18,8 +22,8 @@ let createProduct = async ({ name, price, picture, details }) => {
   return result;
 }
 
-let updateProduct = async ({ name, price, picture, details, id }) => {
-  const result = await repository.updateProduct({ name, price, picture, details, id });
+let updateProduct = async (updatingVariables) => {
+  const result = await repository.updateProduct(updatingVariables);
   return result;
 }
 
@@ -28,4 +32,11 @@ let deleteProduct = async (id) => {
   return result;
 }
 
-module.exports = { getAllAvailableProducts, getProduct, createProduct, updateProduct, deleteProduct };
+module.exports = {
+  getAllAvailableProducts,
+  getAllProductFromACategory,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct
+};

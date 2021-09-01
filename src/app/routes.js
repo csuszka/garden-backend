@@ -8,6 +8,7 @@ const products = require('./controllers/products.controller');
 //////////////////////////////////
 
 router.get('/products', products.getAllProducts);
+router.get('/products/category/:category',)
 // router.post
 router.patch('/products/:id', products.updateProduct);
 
