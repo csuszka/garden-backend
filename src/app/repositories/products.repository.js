@@ -26,7 +26,6 @@ let getAllProductFromACategory = (category) => {
       }
     })
   })
-
 }
 
 let getProduct = (id) => {
@@ -100,6 +99,7 @@ let deleteProduct = (id) => {
 
 module.exports = {
   getAllAvailableProducts,
+  getAllCategories,
   getAllProductFromACategory,
   getProduct,
   createProduct,
