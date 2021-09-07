@@ -34,7 +34,6 @@ let deleteProduct = async (id) => {
 
 module.exports = {
   getAllAvailableProducts,
-  getAllCategories,
   getAllProductFromACategory,
   getProduct,
   createProduct,

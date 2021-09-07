@@ -2,14 +2,15 @@
 
 const express = require('express');
 const router = express.Router();
+const categories = require('./controllers/categories.controller');
 const products = require('./controllers/products.controller');
 
-router.get('/categories/all', products.getAllCategories);
+router.get('/categories/all', categories.getAllCategories);
 
-router.post('/categories/create', products.createCategory);
-router.get('/categories/:id', products.getProduct);
-router.patch('/categories/:id', products.updateProduct);
-router.delete('/categories/:id', products.deleteProduct);
+router.post('/categories/create', categories.createCategory);
+router.get('/categories/:id', categories.getCategory);
+router.patch('/categories/:id', categories.updateCategory);
+router.delete('/categories/:id', categories.deleteCategory);
 
 router.get('/products/all', products.getAllProducts);
 router.get('/products/category/:category', products.getAllProductsOfACategory);

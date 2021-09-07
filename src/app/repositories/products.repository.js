@@ -99,7 +99,6 @@ let deleteProduct = (id) => {
 
 module.exports = {
   getAllAvailableProducts,
-  getAllCategories,
   getAllProductFromACategory,
   getProduct,
   createProduct,
