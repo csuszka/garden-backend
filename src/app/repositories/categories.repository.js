@@ -15,10 +15,10 @@ let getAllCategories = () => {
   })
 }
 
-let createCategory = ({ parentId, categoryString }) => {
+let createCategory = ({ parentId, name }) => {
   return new Promise((resolve, reject) => {
-    const query = `INSERT INTO categories (${parentId ? 'parent_id, ' : ''}${categoryString ? 'string, ' : ''}) VALUES (${parentId ? '?, ' : ''}${categoryString ? '?, ' : ''});`;
-    const queryArray = [Number(parentId), categoryString].filter(variable => variable);
+    const query = `INSERT INTO categories (${parentId ? 'parent_id, ' : ''}${name ? 'name, ' : ''}) VALUES (${parentId ? '?, ' : ''}${name ? '?, ' : ''});`;
+    const queryArray = [Number(parentId), name].filter(variable => variable);
 
     if (queryArray.length < 1) {
       reject(new Error('No changes were made'))
@@ -49,10 +49,10 @@ let getCategory = (id) => {
   })
 }
 
-let updateCategory = ({ id, parentId, categoryString }) => {
+let updateCategory = ({ id, parentId, name }) => {
   return new Promise((resolve, reject) => {
-    const query = `UPDATE categories SET ${parentId ? 'parentId = ?, ' : ''}${categoryString ? 'categoryString = ?, ' : ''}WHERE id = ?;`;
-    const queryArray = [Number(id), Number(parentId), categoryString].filter(variable => variable);
+    const query = `UPDATE categories SET ${parentId ? 'parentId = ?, ' : ''}${name ? 'name = ?, ' : ''}WHERE id = ?;`;
+    const queryArray = [Number(id), Number(parentId), name].filter(variable => variable);
 
     if (queryArray.length < 2) {
       reject(new Error('No changes were made'))
