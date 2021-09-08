@@ -24,7 +24,7 @@ let createCategory = ({ parentId, categoryString }) => {
       reject(new Error('No changes were made'))
     } else {
       const modifiedQuery = query.replaceAll(', )', ')');
-      console.log(modifiedQuery)
+
       db.conn.query(modifiedQuery || query, queryArray, (error, rows) => {
         if (error) {
           reject(error);
